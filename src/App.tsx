@@ -40,7 +40,6 @@ function App() {
             </Route>
           </Switch>
         </Main>
-
         <Nav/>
       </Wrapper>
     </Router>
