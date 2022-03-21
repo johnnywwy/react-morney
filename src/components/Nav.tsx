@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Icon from './Icon';
 
@@ -14,17 +14,25 @@ const NavWrapper = styled.nav`
     > li {
       width: 33.33%;
       text-align: center;
-      
+
       > a {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 4px 0;
-      }
 
-      > .icon {
-        width: 24px;
-        height: 24px;
+        .icon {
+          width: 24px;
+          height: 24px;
+        }
+
+        &.selected {
+          color: #f60;
+
+          .icon {
+            fill: #f60;
+          }
+        }
       }
     }
   }
@@ -35,22 +43,22 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-          <Link to="/tags">
+          <NavLink to="/tags" activeClassName="selected">
             <Icon name="tag"/>
             标签页
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/money">
+          <NavLink to="/money" activeClassName="selected">
             <Icon name="money"/>
             记账
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/statistics">
+          <NavLink to="/statistics" activeClassName="selected">
             <Icon name="chart"/>
             统计
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </NavWrapper>
