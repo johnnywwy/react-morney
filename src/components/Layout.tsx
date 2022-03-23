@@ -19,7 +19,7 @@ const Layout = (props: any) => {
   // console.log(props);
   return (
     <Wrapper>
-      <Main>
+      <Main className={props.className}>
         {props.children}
       </Main>
       <Nav/>
