@@ -28,4 +28,4 @@ const CategorySection = styled.section`
   }
 
 `;
-export default CategorySection
+export {CategorySection};

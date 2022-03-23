@@ -64,8 +64,6 @@ const TagsSection: React.FunctionComponent = () => {
       setSelectedTags([tag]);
       // setSelectedTags([...selectedTags,tag]);
     }
-    console.log(selectedTags);
-
   };
   return (
     <Wrapper>
@@ -84,4 +82,4 @@ const TagsSection: React.FunctionComponent = () => {
 };
 
 
-export default TagsSection;
+export {TagsSection};
