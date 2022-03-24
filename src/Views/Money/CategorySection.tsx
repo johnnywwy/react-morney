@@ -30,11 +30,15 @@ const Wrapper: React.FunctionComponent = styled.section`
   }
 
 `;
+type Props = {
+  value: '-' | '+';
+  onchange: (value: '-' | '+') => void
+}
 
-const CategorySection = () => {
-  const [categoryList] = useState<('-' | '+')[]>(['-', '+']);
-  const [category, setCategory] = useState('-');
+const CategorySection: React.FC<Props> = (props) => {
   const categoryMap = {'-': '支出', '+': '收入'};
+  const [categoryList] = useState<('-' | '+')[]>(['-', '+']);
+  const category = props.value;
 
   return (
     <Wrapper>
@@ -43,7 +47,7 @@ const CategorySection = () => {
           <li
             key={c}
             className={category === c ? 'selected' : ''}
-            onClick={() => {setCategory(c);}}
+            onClick={() => {props.onchange(c);}}
           >{categoryMap[c]}
           </li>
         )}
