@@ -67,7 +67,15 @@ const Wrapper = styled.section`
 `;
 
 const NumberPadSection: React.FunctionComponent = () => {
-  const [output, setOutput] = useState('0');
+  const [output, _setOutput] = useState('0');
+  const setOutput = (output: string) => {
+    if (output.length > 18) {
+      output = output.slice(0, 18);
+    } else if (output.length === 0) {
+      output = '0';
+    }
+    _setOutput(output);
+  };
   const onClickButton = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) {return;}
@@ -82,35 +90,47 @@ const NumberPadSection: React.FunctionComponent = () => {
       case '7':
       case '8':
       case '9':
-      case '.':
         if (output === '0') {
           setOutput(text);
         } else {
           setOutput(output + text);
         }
         break;
+
+      case '.':
+        if (output.indexOf('.') >= 0) {
+          return;
+        }
+        setOutput(output + '.');
+        break;
+
       case '删除':
+        if (output.length === 1) {
+          setOutput('0');
+        } else {
+          setOutput(output.slice(0, -1));
+        }
         console.log('删除');
         break;
       case '清空':
+        setOutput('0');
         console.log('清空');
         break;
       case '保存':
+        window.alert('保存成功');
         console.log('保存');
+        setOutput('0');
         break;
     }
   };
 
-  const onClickNumber = (number: number) => {
-
-  };
 
   return (
     <Wrapper>
       <div className="output">
         {output}
       </div>
-      <div className="pad clearfix">
+      <div className="pad clearfix" onClick={onClickButton}>
         <button>1</button>
         <button>2</button>
         <button>3</button>
