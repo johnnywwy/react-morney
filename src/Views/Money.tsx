@@ -22,44 +22,37 @@ function Money() {
     category: '-' as Category,
     amount: 0
   });
+
+  const onChange = (obj: Partial<typeof selected>) => {
+    setSelected({...selected, ...obj});
+  };
+
   return (
     <MyLayout>
       {selected.tags}
-      <br/>
+      <hr/>
       {selected.note}
-      <br/>
+      <hr/>
       {selected.category}
-      <br/>
+      <hr/>
       {selected.amount}
-
       <TagsSection
         value={selected.tags}
-        onchange={(tags) => setSelected({
-          ...selected,
-          tags: tags
-        })}
+        onchange={tags => onChange({tags})}
       />
       <NoteSection
         value={selected.note}
-        onchange={(note) => setSelected({
-          ...selected,
-          note: note
-        })}
+        onchange={note => onChange({note})}
       />
       <CategorySection
         value={selected.category}
-        onchange={(category) => setSelected({
-          ...selected,
-          category: category
-        })}/>
+        onchange={category => onChange({category})}/>
       <NumberPadSection
         value={selected.amount}
-        onchange={(amount) => setSelected({
-          ...selected,
-          amount: amount
-        })}
-        onOk={()=>{
-          window.alert('保存成功！')
+        onchange={(amount) => onChange({amount})}
+        onOk={() => {
+          console.log(selected);
+          window.alert('保存成功！');
         }}
       />
     </MyLayout>
