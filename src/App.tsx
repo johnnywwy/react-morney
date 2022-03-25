@@ -10,11 +10,9 @@ import NoMatch from './Views/NoMatch';
 import styled from 'styled-components';
 import {Tag} from './Views/Tag';
 
-
 const AppWrapper = styled.div`
   color: #333
 `;
-
 
 function App() {
   return (
