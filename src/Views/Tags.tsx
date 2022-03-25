@@ -27,7 +27,7 @@ const TagList = styled.ol`
 
 `;
 
-const Button = styled.button`
+const Button = styled.button` 
   color: white;
   background: #767676;
   font-size: 18px;
