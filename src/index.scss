@@ -35,8 +35,8 @@ body {
 :focus{
   outline: none;
 }
-button{
-  font-family: inherit;
+button,input{
+  font: inherit;
 }
 .clearfix::after{
   content:'';
