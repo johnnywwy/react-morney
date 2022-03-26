@@ -1,4 +1,4 @@
-const generateOutput = (text: string, output: string) => {
+const generateOutput = (text: string, output = '0') => {
   switch (text) {
     case '0':
     case '1':
@@ -16,7 +16,7 @@ const generateOutput = (text: string, output: string) => {
         return output + text;
       }
     case '.':
-      if (output.indexOf('.') >= 0) {return output;}
+      if (output.indexOf('.') >= 0) {return 'fuck';}
       return output + '.';
     case '删除':
       if (output.length === 1) {
@@ -28,7 +28,6 @@ const generateOutput = (text: string, output: string) => {
       return '';
     default:
       return '';
-
   }
 };
 
