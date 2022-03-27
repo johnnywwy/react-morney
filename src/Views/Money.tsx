@@ -13,6 +13,9 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `;
 
+const CategoryWrapper = styled.div`
+  background: #c4c4c4;
+`;
 
 type Category = '-' | '+';
 
@@ -49,9 +52,13 @@ function Money() {
         value={selected.note}
         onchange={note => onChange({note})}
       />
-      <CategorySection
-        value={selected.category}
-        onchange={category => onChange({category})}/>
+
+      <CategoryWrapper>
+        <CategorySection
+          value={selected.category}
+          onchange={category => onChange({category})}/>
+      </CategoryWrapper>
+
       <NumberPadSection
         value={selected.amount}
         onchange={(amount) => onChange({amount})}

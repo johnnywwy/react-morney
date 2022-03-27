@@ -52,8 +52,17 @@ const useTags = () => {//封装一个自定义hook
     return result;
   };
 
+  const getName = (id: number) => {
+    const tag = tags.filter(t => t.id === id)[0];
+    return tag ? tag.name : '';
+  };
 
-  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag};
+
+  return {
+    tags, setTags, findTag,
+    findTagIndex, updateTag,
+    deleteTag, addTag, getName
+  };
 };
 
 export {useTags};
