@@ -24,7 +24,6 @@ const defaultFormData = {
 };
 
 function Money() {
-  console.log('money执行了');
   const [selected, setSelected] = useState(defaultFormData);
 
   const {records, addRecord} = useRecords();
@@ -42,7 +41,6 @@ function Money() {
 
   return (
     <MyLayout>
-      {JSON.stringify(selected)}
       <TagsSection
         value={selected.tagId}
         onchange={tagId => onChange({tagId})}
