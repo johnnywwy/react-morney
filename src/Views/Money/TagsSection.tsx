@@ -48,13 +48,8 @@ type Props = {
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-
   const {tags, addTag} = useTags();
-
   const selectedTagId = props.value;
-
-
-
   const onToggleTag = (tagId: number,) => {
     const index = selectedTagId.indexOf(tagId);
     if (index >= 0) {
