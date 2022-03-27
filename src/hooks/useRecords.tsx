@@ -1,16 +1,15 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
 
-type newRecordItem = {
+export type RecordItem = {
   tagId: number[]
   note: string
   category: '+' | '-'
   amount: number
+  createdAt: string
 }
 
-type RecordItem = newRecordItem & {
-  createdAt: string //ISO 8601
-}
+type newRecordItem = Omit<RecordItem, 'createdAt'>
 
 
 const useRecords = () => {
@@ -32,6 +31,7 @@ const useRecords = () => {
     setRecords([...records, record]);
     return true;
   };
+
   useUpdate(() => {
     window.localStorage.setItem('records', JSON.stringify(records));
   }, [records]);

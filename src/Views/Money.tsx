@@ -38,6 +38,8 @@ function Money() {
   const submit = () => {
     if (addRecord(selected)) {
       window.alert('保存成功！');
+      // window.location.reload()
+      console.log(selected);
     }
     setSelected(defaultFormData);
   };
