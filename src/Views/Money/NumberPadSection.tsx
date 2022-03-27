@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {generateOutput} from './NumberPadSection/generateOuyput';
 
@@ -9,19 +9,19 @@ type Props = {
 }
 
 const NumberPadSection: React.FC<Props> = (props) => {
-  // const [output, _setOutput] = useState('0');
-  const output = props.value.toString();
+  const [output, _setOutput] = useState(props.value.toString());
+  // const output = props.value.toString();
   const setOutput = (output: string) => {
-    let value;
+    let newOutput: string;
     if (output.length > 18) {
-      value = parseFloat(output.slice(0, 18));
+      newOutput = output.slice(0, 18);
     } else if (output.length === 0) {
-      value = 0;
+      newOutput = '0';
     } else {
-      //todo
-      value = parseFloat(output);
+      newOutput = output;
     }
-    props.onchange(value);
+    _setOutput(newOutput);
+    props.onchange(parseFloat(newOutput));
   };
 
   const onClickButton = (e: React.MouseEvent) => {
