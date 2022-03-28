@@ -7,12 +7,11 @@ type Props = {
   onchange: (value: number) => void;
   onOk?: () => void
 }
-
+let newOutput: string;
 const NumberPadSection: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState(props.value.toString());
   // const output = props.value.toString();
   const setOutput = (output: string) => {
-    let newOutput: string;
     if (output.length > 18) {
       newOutput = output.slice(0, 18);
     } else if (output.length === 0) {
@@ -62,4 +61,4 @@ const NumberPadSection: React.FC<Props> = (props) => {
   );
 };
 
-export {NumberPadSection};
+export {NumberPadSection,newOutput};

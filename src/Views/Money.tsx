@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {TagsSection} from './Money/TagsSection';
 import {NoteSection} from './Money/NoteSection';
 import {CategorySection} from './Money/CategorySection';
-import {NumberPadSection} from './Money/NumberPadSection';
+import {newOutput, NumberPadSection} from './Money/NumberPadSection';
 import {useRecords} from '../hooks/useRecords';
 
 
@@ -29,7 +29,7 @@ const defaultFormData = {
 function Money() {
   const [selected, setSelected] = useState(defaultFormData);
 
-  const {records, addRecord} = useRecords();
+  const {addRecord} = useRecords();
 
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({...selected, ...obj});
@@ -39,6 +39,7 @@ function Money() {
     if (addRecord(selected)) {
       window.alert('保存成功！');
       // window.location.reload()
+      console.log('newOutput',newOutput);
       console.log(selected);
     }
     setSelected(defaultFormData);
