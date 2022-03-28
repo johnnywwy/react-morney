@@ -1,6 +1,7 @@
 {
   "name": "morney",
   "version": "0.1.0",
+  "homepage": "https://johnnywwy.github.io/react-morney-website/",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
