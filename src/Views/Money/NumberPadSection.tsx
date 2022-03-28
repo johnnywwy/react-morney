@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {generateOutput} from './NumberPadSection/generateOuyput';
 
@@ -7,11 +7,12 @@ type Props = {
   onchange: (value: number) => void;
   onOk?: () => void
 }
-let newOutput: string;
+
 const NumberPadSection: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState(props.value.toString());
   // const output = props.value.toString();
   const setOutput = (output: string) => {
+    let newOutput: string;
     if (output.length > 18) {
       newOutput = output.slice(0, 18);
     } else if (output.length === 0) {
@@ -23,12 +24,17 @@ const NumberPadSection: React.FC<Props> = (props) => {
     props.onchange(parseFloat(newOutput));
   };
 
+  useEffect(() => {
+    _setOutput(props.value.toString())
+  },[props.value]);
+
   const onClickButton = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) {return;}
-    if (text === 'ok') {
+    if (text === '保存') {
       if (props.onOk) {
         props.onOk();
+        // setOutput('')
       }
       return;
     }
@@ -53,7 +59,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button className="save" onClick={props.onOk}>保存</button>
+        <button className="save">保存</button>
         <button className="zero">0</button>
         <button>.</button>
       </div>
@@ -61,4 +67,4 @@ const NumberPadSection: React.FC<Props> = (props) => {
   );
 };
 
-export {NumberPadSection,newOutput};
+export {NumberPadSection};

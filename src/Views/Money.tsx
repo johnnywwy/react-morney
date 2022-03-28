@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import {TagsSection} from './Money/TagsSection';
 import {NoteSection} from './Money/NoteSection';
 import {CategorySection} from './Money/CategorySection';
-import {newOutput, NumberPadSection} from './Money/NumberPadSection';
+import {NumberPadSection} from './Money/NumberPadSection';
 import {useRecords} from '../hooks/useRecords';
-
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -38,9 +37,7 @@ function Money() {
   const submit = () => {
     if (addRecord(selected)) {
       window.alert('保存成功！');
-      //todo
-      console.log('newOutput', newOutput);
-      console.log(selected);
+      // console.log(selected);
     }
     setSelected(defaultFormData);
   };
