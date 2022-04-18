@@ -11,7 +11,9 @@ import styled from 'styled-components';
 import {Tag} from './Views/Tag';
 
 const AppWrapper = styled.div`
-  color: #333
+  color: #333;
+  max-width: 500px;
+  margin: 0 auto;
 `;
 
 function App() {
